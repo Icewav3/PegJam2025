@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7665518134107007961}
   - component: {fileID: 8542371092020159622}
   - component: {fileID: 742611249307757176}
+  - component: {fileID: 2257156892983906826}
   - component: {fileID: 8137806556932188153}
   m_Layer: 0
   m_Name: EnemyBase
@@ -131,10 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789656f5d92b4c043a4dcf12f63f01c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 2334616164823813880}
+  _spr: {fileID: 5699613652104433150}
   _detectionRange: 5
   _passiveBehaviour: {fileID: 742611249307757176}
-  _aggressiveBehaviour: {fileID: 742611249307757176}
+  _aggressiveBehaviour: {fileID: 2257156892983906826}
 --- !u!114 &742611249307757176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +152,21 @@ MonoBehaviour:
   _rb: {fileID: 8137806556932188153}
   _lungeForce: 100
   _lungeDuration: 2
+--- !u!114 &2257156892983906826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e3dc796f56c7140929b22eb89968bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 8137806556932188153}
+  _lungeForce: 100
+  _lungeDuration: 1
 --- !u!50 &8137806556932188153
 Rigidbody2D:
   serializedVersion: 4
