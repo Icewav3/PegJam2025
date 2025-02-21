@@ -11,7 +11,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private float _lungeDuration = 0.5f;
 
-    private Coroutine _moveRoutine;
+    private float _timeToLunge = 0;
+
+    private bool _moving;
     private Vector2 _lastMoveInput;
 
     public void HandleMove(Vector2 moveInfo)
@@ -21,24 +23,22 @@ public class PlayerMove : MonoBehaviour
 
     public void StartMove()
     {
-        _rb.AddForce(_lastMoveInput * _lungeForce);
-
-        _moveRoutine = StartCoroutine(MoveRoutine());
+        _moving = true;
     }
 
     public void StopMove()
     {
-        StopCoroutine(_moveRoutine);
-        _moveRoutine = null;
+        _moving = false;
     }
 
-    private IEnumerator MoveRoutine()
+    private void Update()
     {
-        while(true)
-        {
-            _rb.AddForce(_lastMoveInput * _lungeForce);
+        _timeToLunge -= Time.deltaTime;
 
-            yield return new WaitForSeconds(_lungeDuration);
+        if(_timeToLunge < 0 && _moving)
+        {
+            _timeToLunge = _lungeDuration;
+            _rb.AddForce(_lastMoveInput * _lungeForce);
         }
     }
 }
