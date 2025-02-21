@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMoveRandomly : EnemyBehaviour
+public class EnemyMoveRandomly : EnemyMovementBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rb;
@@ -21,7 +21,9 @@ public class EnemyMoveRandomly : EnemyBehaviour
         {
             _timeToLunge = _lungeDuration;
             float random = Random.Range(0f, 2 * Mathf.PI);
-            _rb.AddForce(new Vector2(Mathf.Cos(random), Mathf.Sin(random)) * _lungeForce);
+            Vector2 moveDir = new Vector2(Mathf.Cos(random), Mathf.Sin(random));
+            _rb.AddForce(moveDir * _lungeForce);
+            BroadcastMove(moveDir);
         }
     }
 }

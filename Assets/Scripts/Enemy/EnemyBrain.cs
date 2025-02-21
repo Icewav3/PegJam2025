@@ -12,33 +12,51 @@ public class EnemyBrain : MonoBehaviour
     private SpriteRenderer _spr;
 
     [SerializeField]
+    private Animator _anim;
+
+    [SerializeField]
     private float _detectionRange = 5f;
 
     [SerializeField]
-    private EnemyBehaviour _passiveBehaviour;
+    private EnemyMovementBehaviour _passiveMoveBehaviour;
 
     [SerializeField]
-    private EnemyBehaviour _aggressiveBehaviour;
+    private EnemyMovementBehaviour _aggressiveMoveBehaviour;
 
     private float _distToPlayer => Vector2.Distance(transform.position, _player.transform.position);
 
     private void OnEnable()
     {
-        _passiveBehaviour.Initialize(_player);
-        _aggressiveBehaviour.Initialize(_player);
+        _passiveMoveBehaviour.Initialize(_player);
+        _aggressiveMoveBehaviour.Initialize(_player);
+
+        _passiveMoveBehaviour.OnMove += HandleMove;
+        _aggressiveMoveBehaviour.OnMove += HandleMove;
+    }
+
+    private void OnDisable()
+    {
+        _passiveMoveBehaviour.OnMove -= HandleMove;
+        _aggressiveMoveBehaviour.OnMove -= HandleMove;
     }
 
     private void Update()
     {
         if(_distToPlayer < _detectionRange)
         {
-            _aggressiveBehaviour.PerformBehaviour();
+            _aggressiveMoveBehaviour.PerformBehaviour();
             _spr.color = Color.red;
         }
         else
         {
-            _passiveBehaviour.PerformBehaviour();
+            _passiveMoveBehaviour.PerformBehaviour();
             _spr.color = Color.green;
         }
+    }
+
+    private void HandleMove(EnemyMovementBehaviour moveBehaviour, Vector2 moveDir)
+    {
+        _anim.SetTrigger("Move");
+        _spr.transform.rotation = Quaternion.Euler(new Vector3(0,0, (Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg) - 90f));
     }
 }

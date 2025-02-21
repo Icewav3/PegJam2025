@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMoveAtPlayer : EnemyBehaviour
+public class EnemyMoveAtPlayer : EnemyMovementBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rb;
@@ -24,6 +24,7 @@ public class EnemyMoveAtPlayer : EnemyBehaviour
             _timeToLunge = _lungeDuration;
 
             _rb.AddForce(_toPlayer * _lungeForce);
+            BroadcastMove(_toPlayer);
         }
     }
 }
