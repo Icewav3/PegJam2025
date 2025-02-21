@@ -7,8 +7,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Rigidbody2D _rb;
     [SerializeField]
-    private float _moveSpeed = 5f;
+    private float _lungeForce = 5f;
+    [SerializeField]
+    private float _lungeDuration = 0.5f;
 
+    private Coroutine _moveRoutine;
     private Vector2 _lastMoveInput;
 
     public void HandleMove(Vector2 moveInfo)
@@ -16,8 +19,26 @@ public class PlayerMove : MonoBehaviour
         _lastMoveInput = moveInfo;
     }
 
-    private void Update()
+    public void StartMove()
     {
-        _rb.velocity = _lastMoveInput * _moveSpeed;
+        _rb.AddForce(_lastMoveInput * _lungeForce);
+
+        _moveRoutine = StartCoroutine(MoveRoutine());
+    }
+
+    public void StopMove()
+    {
+        StopCoroutine(_moveRoutine);
+        _moveRoutine = null;
+    }
+
+    private IEnumerator MoveRoutine()
+    {
+        while(true)
+        {
+            _rb.AddForce(_lastMoveInput * _lungeForce);
+
+            yield return new WaitForSeconds(_lungeDuration);
+        }
     }
 }
