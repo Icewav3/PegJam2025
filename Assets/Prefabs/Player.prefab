@@ -289,7 +289,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1407295627
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b57c7061efa592b48a1e3eb08cdd5954, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -341,6 +341,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3309085418231927692, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309085418231927692, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
+      propertyPath: InitialModule.startColor.minColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309085418231927692, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0.9882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309085418231927692, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 3309085418231927692, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
       value: 0.7490196
       objectReference: {fileID: 0}
     - target: {fileID: 4999234215660402599, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
