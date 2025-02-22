@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,14 @@ public enum DamageTeam
 
 public class DamageReceiver : MonoBehaviour
 {
-    
-}
+    public event Action<DamageReceiver, float> OnDamage;
 
-public class DamageEvent
-{
-    public float Damage { get; }
-    public GameObject MainSource { get; }
+    [SerializeField]
+    private DamageTeam _team;
+    public DamageTeam Team => _team;
+
+    public void ReceiveDamage()
+    {
+
+    }
 }
