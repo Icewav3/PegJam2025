@@ -33,6 +33,13 @@ public class DamageReceiver : MonoBehaviour
 
 public class DamageEvent
 {
+    public DamageEvent(int damage, GameObject mainSource, GameObject specificSource)
+    {
+        Damage = damage;
+        MainSource = mainSource;
+        SpecificSource = specificSource;
+    }   
+
     public int Damage { get; }
     public GameObject MainSource { get; }
     public GameObject SpecificSource { get; }

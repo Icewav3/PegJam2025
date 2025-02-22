@@ -121,6 +121,9 @@ GameObject:
   - component: {fileID: 2257156892983906826}
   - component: {fileID: 8137806556932188153}
   - component: {fileID: 472584647399343483}
+  - component: {fileID: 3503820105575538399}
+  - component: {fileID: 1009807280937560073}
+  - component: {fileID: 6066613209278765412}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -176,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 8137806556932188153}
-  _lungeForce: 100
-  _lungeDuration: 2
+  _lungeForce: 150
+  _lungeDuration: 3
 --- !u!114 &2257156892983906826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 8137806556932188153}
-  _lungeForce: 100
-  _lungeDuration: 1
+  _lungeForce: 300
+  _lungeDuration: 1.5
 --- !u!50 &8137806556932188153
 Rigidbody2D:
   serializedVersion: 4
@@ -219,7 +222,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &472584647399343483
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -255,6 +258,47 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3503820105575538399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b557756b16f4b6b4e8bcbb2db4703961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 2
+--- !u!114 &1009807280937560073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c624aee5c65fc3c4295c4969e7ace395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _team: 0
+  _healthPool: {fileID: 0}
+--- !u!114 &6066613209278765412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4092500554a68094eafc47836a5f0b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _team: 0
+  _damage: 1
 --- !u!1 &3150979323351387803
 GameObject:
   m_ObjectHideFlags: 0
