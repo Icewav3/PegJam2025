@@ -13,6 +13,7 @@ public enum DamageTeam
 public class DamageReceiver : MonoBehaviour
 {
     public event Action<DamageReceiver, DamageEvent> OnDamage;
+    public event Action<DamageReceiver, DamageEvent> OnDeath;
 
     [SerializeField]
     private DamageTeam _team;
@@ -20,6 +21,7 @@ public class DamageReceiver : MonoBehaviour
 
     [SerializeField]
     private HealthPool _healthPool;
+    public HealthPool HealthPool => _healthPool;
 
     [SerializeField]
     private bool _destroyOnDeath = false;
@@ -32,7 +34,11 @@ public class DamageReceiver : MonoBehaviour
 
         OnDamage?.Invoke(this, dmgEvent);
 
-        if (_healthPool.Health <= 0) Destroy(gameObject);
+        if (_healthPool.Health <= 0)
+        {
+            OnDeath?.Invoke(this, dmgEvent);
+            if(_destroyOnDeath) Destroy(gameObject);
+        }
     }
 }
 
