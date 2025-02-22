@@ -515,7 +515,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -543,7 +543,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1581725389
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1118856638
@@ -800,6 +800,42 @@ PrefabInstance:
     - target: {fileID: 4353176088072835533, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_Name
       value: DialogueBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069595242637064145, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_fontSize
+      value: 72.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216121600045375191, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -60.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216121600045375191, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -263.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_margin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_lineSpacing
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_characterSpacing
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
