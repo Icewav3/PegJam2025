@@ -202,5 +202,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 7480535427456608213}
-  _lifetime: 3
+  _lifetime: 2.5
   _launchForce: 1000
