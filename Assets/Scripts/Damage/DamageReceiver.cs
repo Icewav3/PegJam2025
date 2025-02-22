@@ -23,7 +23,7 @@ public class DamageReceiver : MonoBehaviour
 
     public void ReceiveDamage(DamageEvent dmgEvent)
     {
-        float damage = dmgEvent.Damage;
+        int damage = dmgEvent.Damage;
 
         damage -= _healthPool.Damage(damage);
 
@@ -33,7 +33,7 @@ public class DamageReceiver : MonoBehaviour
 
 public class DamageEvent
 {
-    public float Damage { get; }
+    public int Damage { get; }
     public GameObject MainSource { get; }
     public GameObject SpecificSource { get; }
 }

@@ -11,15 +11,15 @@ public class HealthPool : MonoBehaviour
     private int _maxHealth;
     public float MaxHealth => _maxHealth;
 
-    private float _health;
-    public float Health => _health;
+    private int _health;
+    public int Health => _health;
 
     private void OnEnable()
     {
         _health = _maxHealth;
     }
 
-    public float Damage(float damage)
+    public int Damage(int damage)
     {
         if(_health < damage)
         {
@@ -35,7 +35,7 @@ public class HealthPool : MonoBehaviour
         return damage;
     }
 
-    public float Heal(float heal)
+    public int Heal(int heal)
     {
         if (_health + heal > _maxHealth)
         {
