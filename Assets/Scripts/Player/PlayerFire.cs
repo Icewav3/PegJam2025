@@ -12,6 +12,9 @@ public class PlayerFire : MonoBehaviour
 
     [SerializeField]
     private GameObject _projectile;
+
+    [SerializeField]
+    private PlayerAim _aimer;
     
     public void StartFire()
     {
@@ -31,7 +34,7 @@ public class PlayerFire : MonoBehaviour
         if(!_firing && _anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerHoldFire"))
         {
             _anim.SetTrigger("ReleaseFire");
-            Instantiate(_projectile, transform.position, Quaternion.identity);
+            Instantiate(_projectile, transform.position, _aimer.transform.rotation);
         }
     }
 }
