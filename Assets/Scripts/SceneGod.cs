@@ -19,6 +19,7 @@ public class SceneGod : MonoBehaviour
 	//player variables
 
 	public int PlayerScore {get; private set; }
+	public int PlayerDeaths {get; private set; }
 	
 	/// <summary>
 	/// Initializes the SceneGod instance and ensures it persists across scenes.
@@ -53,11 +54,18 @@ public class SceneGod : MonoBehaviour
 	{
 		PlayerScore += score;
 	}
+	/// <summary>
+	/// Increases death count by 1
+	/// </summary>
+	public void IncrementDeaths()
+	{
+		PlayerDeaths += 1;
+	}
 
 	/// <summary>
-	/// Resets the player's score to zero.
+	/// Resets the player's score to zero. & resets deathcounter
 	/// </summary>
-	public void ResetScore()
+	public void ResetPlayer()
 	{
 		PlayerScore = 0;
 	}
