@@ -19,7 +19,7 @@ public class EnemyMoveRandomly : EnemyMovementBehaviour
 
         if (_timeToLunge < 0)
         {
-            _timeToLunge = _lungeDuration;
+            _timeToLunge = _lungeDuration * Random.Range(0.9f,1.1f);
             float random = Random.Range(0f, 2 * Mathf.PI);
             Vector2 moveDir = new Vector2(Mathf.Cos(random), Mathf.Sin(random));
             _rb.AddForce(moveDir * _lungeForce);
