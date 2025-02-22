@@ -1,39 +1,61 @@
 using UnityEngine;
 
-public class CircularArena : MonoBehaviour
+public class CircularBoundary : MonoBehaviour
 {
-    [SerializeField] private float radius = 5f;
+    [SerializeField] private float radius = 10f;
+    [SerializeField] private int edgeColliderPoints = 32;
+    private EdgeCollider2D edgeCollider;
 
     private void Awake()
     {
-        // Create the boundary
-        CreateCircularBoundary();
+        edgeCollider = gameObject.GetComponent<EdgeCollider2D>();
+        if (edgeCollider == null)
+        {
+            edgeCollider = gameObject.AddComponent<EdgeCollider2D>();
+        }
+
+        UpdateCollider();
     }
 
-    private void CreateCircularBoundary()
+    private void UpdateCollider()
     {
-        // Add required components
-        var rigidbody2D = gameObject.AddComponent<Rigidbody2D>();
-        rigidbody2D.bodyType = RigidbodyType2D.Static;
+        Vector2[] points = new Vector2[edgeColliderPoints + 1];
 
-        var compositeCollider = gameObject.AddComponent<CompositeCollider2D>();
-
-        // Create an empty child object for the edge collider
-        var edgeObject = new GameObject("CircleBoundary");
-        edgeObject.transform.SetParent(transform);
-
-        // Add edge collider
-        var edgeCollider = edgeObject.AddComponent<EdgeCollider2D>();
-        edgeCollider.usedByComposite = true;
-
-        // Generate points for the circle
-        Vector2[] points = new Vector2[33]; // 32 segments + 1 to close the loop
-        for (int i = 0; i < 33; i++)
+        // Generate points in reverse order for outside collision
+        for (int i = 0; i <= edgeColliderPoints; i++)
         {
-            float angle = (i * 360f / 32f) * Mathf.Deg2Rad;
-            points[i] = new Vector2(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius);
+            float angle = ((edgeColliderPoints - i) * 360f / edgeColliderPoints) * Mathf.Deg2Rad;
+            points[i] = new Vector2(
+                radius * Mathf.Cos(angle),
+                radius * Mathf.Sin(angle)
+            );
         }
 
         edgeCollider.points = points;
+    }
+
+    private void OnValidate()
+    {
+        if (edgeCollider != null)
+        {
+            UpdateCollider();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw the circle in the editor
+        Gizmos.color = new Color(1f, 0f, 0.03f);
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public float Radius
+    {
+        get => radius;
+        set
+        {
+            radius = value;
+            UpdateCollider();
+        }
     }
 }
