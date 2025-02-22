@@ -19,6 +19,9 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInput.actions.FindAction("Move").started += StartMove;
         _playerInput.actions.FindAction("Move").performed += HandleMove;
         _playerInput.actions.FindAction("Move").canceled += StopMove;
+
+        _playerInput.actions.FindAction("Fire").started += StartFire;
+        _playerInput.actions.FindAction("Fire").canceled += StopFire;
     }
 
     private void OnDisable()
@@ -26,6 +29,9 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInput.actions.FindAction("Move").started -= StartMove;
         _playerInput.actions.FindAction("Move").performed -= HandleMove;
         _playerInput.actions.FindAction("Move").canceled -= StopMove;
+
+        _playerInput.actions.FindAction("Fire").started -= StartFire;
+        _playerInput.actions.FindAction("Fire").canceled -= StopFire;
     }
 
     private void StartMove(InputAction.CallbackContext ctx)
@@ -42,5 +48,15 @@ public class PlayerInputHandler : MonoBehaviour
     {
         _playerMove.HandleMove(Vector2.zero);
         _playerMove.StopMove();
+    }
+
+    private void StartFire(InputAction.CallbackContext ctx)
+    {
+        _playerFire.StartFire();
+    }
+
+    private void StopFire(InputAction.CallbackContext ctx)
+    {
+        _playerFire.StopFire();
     }
 }
