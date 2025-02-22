@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645933949282932477}
   - component: {fileID: 5234550310335768205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EdgeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110427427509999732}
   - component: {fileID: 8961447844815856655}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2961098719709034517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ArenaLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
