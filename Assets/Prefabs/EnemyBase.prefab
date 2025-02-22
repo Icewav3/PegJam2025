@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8908274097086452942}
   - component: {fileID: 5699613652104433150}
   - component: {fileID: 6451333509916356264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 3503820105575538399}
   - component: {fileID: 1009807280937560073}
   - component: {fileID: 6066613209278765412}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2411698972982451174}
   - component: {fileID: 5925028322569908244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,6 +458,10 @@ PrefabInstance:
     - target: {fileID: 5078895695271295500, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
       propertyPath: m_Name
       value: SlimeTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078895695271295500, guid: 48bccc34faa76924cb9c9ecb379e9196, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
