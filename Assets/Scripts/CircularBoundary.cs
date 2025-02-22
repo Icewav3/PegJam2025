@@ -5,7 +5,7 @@ public class CircularBoundary : MonoBehaviour
     [SerializeField] private float radius = 10f;
     [SerializeField] private int edgeColliderPoints = 32;
     private EdgeCollider2D edgeCollider;
-
+    
     private void Awake()
     {
         edgeCollider = gameObject.GetComponent<EdgeCollider2D>();

@@ -479,7 +479,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArenaLevel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1151496605840908503, guid: d595878a48c4e0a498f59865e4dcb59a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
