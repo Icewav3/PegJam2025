@@ -10,6 +10,9 @@ public class ContactDamage : MonoBehaviour
     [SerializeField]
     private int _damage = 1;
 
+    [SerializeField]
+    private bool _destroyOnDamage = false;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         DamageReceiver? dr = collision.collider.GetComponent<DamageReceiver>();
@@ -17,6 +20,8 @@ public class ContactDamage : MonoBehaviour
         if(dr != null && dr.Team != _team)
         {
             dr.ReceiveDamage(new DamageEvent(_damage, gameObject, gameObject));
+
+            if (_destroyOnDamage) Destroy(gameObject);
         }
     }
 }
