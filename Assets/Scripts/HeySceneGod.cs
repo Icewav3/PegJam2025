@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeySceneGod : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         SceneGod.SInstance.player = gameObject;
     }
