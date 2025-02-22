@@ -11,6 +11,9 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField]
     private PlayerMove _playerMove;
 
+    [SerializeField]
+    private PlayerFire _playerFire;
+
     private void OnEnable()
     {
         _playerInput.actions.FindAction("Move").started += StartMove;

@@ -8,15 +8,14 @@ public class HealthPool : MonoBehaviour
     public event Action<HealthPool, float> OnHPChange;
 
     [SerializeField]
-    private int _maxHealth;
-    public float MaxHealth => _maxHealth;
+    private int _startingHealth;
 
     private int _health;
     public int Health => _health;
 
     private void OnEnable()
     {
-        _health = _maxHealth;
+        _health = _startingHealth;
     }
 
     public int Damage(int damage)
@@ -37,15 +36,7 @@ public class HealthPool : MonoBehaviour
 
     public int Heal(int heal)
     {
-        if (_health + heal > _maxHealth)
-        {
-            heal -= (_maxHealth - _health);
-            _health = _maxHealth;
-        }
-        else
-        {
-            _health += heal;
-        }
+        _health += heal;
 
         OnHPChange?.Invoke(this, heal);
 
