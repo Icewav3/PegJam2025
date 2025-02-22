@@ -15,6 +15,9 @@ public class PlayerFire : MonoBehaviour
 
     [SerializeField]
     private PlayerAim _aimer;
+
+    [SerializeField]
+    private HealthPool _healthPool;
     
     public void StartFire()
     {
@@ -35,6 +38,7 @@ public class PlayerFire : MonoBehaviour
         {
             _anim.SetTrigger("ReleaseFire");
             Instantiate(_projectile, transform.position, _aimer.transform.rotation);
+            _healthPool.Damage(1);
         }
     }
 }
