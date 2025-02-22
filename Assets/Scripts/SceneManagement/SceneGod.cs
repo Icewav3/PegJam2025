@@ -12,7 +12,7 @@ public class SceneGod : MonoBehaviour
 	[SerializeField]
 	private string mainMenuScene;
 	public static SceneGod SInstance { get; private set; }
-	public enum GameState { Death, Game, MainMenu }
+	public enum GameState { Death, Game, MainMenu, Quit }
 
 	private GameState _currentState;
 	
@@ -106,5 +106,10 @@ public class SceneGod : MonoBehaviour
 		{
 			Debug.LogWarning("Already in Main Menu Scene!");
 		}
+	}
+
+	public void EnterQuitState()
+	{
+		Application.Quit();
 	}
 }
