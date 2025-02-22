@@ -17,7 +17,7 @@ public class SceneGod : MonoBehaviour
 	private GameState _currentState;
 	
 	//player variables
-
+	public GameObject player;
 	public int PlayerScore {get; private set; }
 	public int PlayerDeaths {get; private set; }
 	
