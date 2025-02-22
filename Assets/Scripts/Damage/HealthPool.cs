@@ -9,6 +9,7 @@ public class HealthPool : MonoBehaviour
 
     [SerializeField]
     private int _startingHealth;
+    public int StartingHealth => _startingHealth;
 
     private int _health;
     public int Health => _health;

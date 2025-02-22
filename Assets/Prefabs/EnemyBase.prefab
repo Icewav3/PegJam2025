@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 563209799
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 3503820105575538399}
   - component: {fileID: 1009807280937560073}
   - component: {fileID: 6066613209278765412}
+  - component: {fileID: 8692828332669348313}
   m_Layer: 7
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -284,7 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _team: 0
-  _healthPool: {fileID: 0}
+  _healthPool: {fileID: 3503820105575538399}
+  _destroyOnDeath: 1
 --- !u!114 &6066613209278765412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _team: 0
   _damage: 1
+  _destroyOnDamage: 0
+--- !u!114 &8692828332669348313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787d901ae27c40a488767e2910910d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: {fileID: 3503820105575538399}
 --- !u!1 &3150979323351387803
 GameObject:
   m_ObjectHideFlags: 0

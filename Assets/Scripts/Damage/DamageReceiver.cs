@@ -21,6 +21,9 @@ public class DamageReceiver : MonoBehaviour
     [SerializeField]
     private HealthPool _healthPool;
 
+    [SerializeField]
+    private bool _destroyOnDeath = false;
+
     public void ReceiveDamage(DamageEvent dmgEvent)
     {
         int damage = dmgEvent.Damage;
@@ -28,6 +31,8 @@ public class DamageReceiver : MonoBehaviour
         damage -= _healthPool.Damage(damage);
 
         OnDamage?.Invoke(this, dmgEvent);
+
+        if (_healthPool.Health <= 0) Destroy(gameObject);
     }
 }
 
