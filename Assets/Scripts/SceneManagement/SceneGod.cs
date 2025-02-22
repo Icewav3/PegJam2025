@@ -12,7 +12,7 @@ public class SceneGod : MonoBehaviour
 	[SerializeField]
 	private string mainMenuScene;
 	public static SceneGod SInstance { get; private set; }
-	private enum GameState { Death, Game, MainMenu }
+	public enum GameState { Death, Game, MainMenu }
 
 	private GameState _currentState;
 	
