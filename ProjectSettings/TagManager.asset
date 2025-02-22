@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 151893865
     locked: 0
+  - name: Goop
+    uniqueID: 1237841707
+    locked: 0
   - name: Enemy
     uniqueID: 563209799
     locked: 0
