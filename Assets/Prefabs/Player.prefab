@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2950291995786555575}
   - component: {fileID: 7387393666127874243}
   - component: {fileID: 1927906720172301193}
+  - component: {fileID: 7172423864872920434}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -227,7 +228,7 @@ MonoBehaviour:
   _anim: {fileID: 147893961957352583}
   _projectile: {fileID: 1904876860836247040, guid: 66375883cde22aa458015d61de661f1e, type: 3}
   _aimer: {fileID: 607479639366468170}
-  _healthPool: {fileID: 3636793352894885205}
+  _dr: {fileID: 2174628114062305655}
 --- !u!114 &7387393666127874243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +257,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dr: {fileID: 2174628114062305655}
   _spr: {fileID: 5153043101711623869}
+  _rb: {fileID: 6390950351906239543}
+--- !u!114 &7172423864872920434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745031063391069799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd146fafc0355f4882cc04e0d02af89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dr: {fileID: 2174628114062305655}
+  _deathParticles: {fileID: 6442351099827588113, guid: b853b15499f02e04e844aa66e5e2b137, type: 3}
 --- !u!1 &3601735611542162217
 GameObject:
   m_ObjectHideFlags: 0

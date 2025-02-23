@@ -18,7 +18,7 @@ public class PlayerFire : MonoBehaviour
     private PlayerAim _aimer;
 
     [SerializeField]
-    private HealthPool _healthPool;
+    private DamageReceiver _dr;
     
     public void StartFire()
     {
@@ -43,7 +43,7 @@ public class PlayerFire : MonoBehaviour
         {
             _anim.SetTrigger("ReleaseFire");
             Instantiate(_projectile, transform.position, _aimer.transform.rotation);
-            _healthPool.Damage(1);
+            _dr.ReceiveDamage(new DamageEvent(1, gameObject, gameObject));
         }
     }
 }

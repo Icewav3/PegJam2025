@@ -30,7 +30,6 @@ public class HealthPool : MonoBehaviour
         {
             _health -= damage;
         }
-        Debug.Log(_health);
         OnHPChange?.Invoke(this, -damage);
         return damage;
     }
