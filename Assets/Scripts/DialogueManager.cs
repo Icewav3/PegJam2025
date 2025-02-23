@@ -245,7 +245,7 @@ public class DialogueManager : MonoBehaviour
             },
             new DialogueEntry
             {
-                characterName = char1Name,
+                characterName = char2Name,
                 dialogue = "Yes, let's keep this moving."
             }
         };
