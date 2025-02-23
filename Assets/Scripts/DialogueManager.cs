@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
             {
                 characterName = char1Name,
                 dialogue =
-                    "If you don't mind, could you tell me where?" // it would be nice if this line got cut off extra fast, rather than playing at normal speed (if easy to do)
+                    "If you don't mind, could you tell me where-" // it would be nice if this line got cut off extra fast, rather than playing at normal speed (if easy to do)
             },
             new DialogueEntry
             {

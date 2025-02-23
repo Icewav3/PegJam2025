@@ -13,10 +13,12 @@ public class SceneGod : MonoBehaviour
 	private string mainMenuScene;
 	public static SceneGod SInstance { get; private set; }
 	public enum GameState { Death, Game, MainMenu, Quit }
-	
+	// services
 	[SerializeField]
-	private GameObject dialogue;
-	
+	public GameObject dialogue;
+
+	[SerializeField] public DialogueEvents dialogueEvents;
+	//state
 	private GameState _currentState;
 	
 	//player variables
@@ -63,12 +65,14 @@ public class SceneGod : MonoBehaviour
 	public void IncrementDeaths()
 	{
 		PlayerDeaths += 1;
+		ResetPlayer();
+		EnterDeathState();
 	}
 
 	/// <summary>
 	/// Resets the player's score to zero. & resets deathcounter
 	/// </summary>
-	public void ResetPlayer()
+	private void ResetPlayer()
 	{
 		PlayerScore = 0;
 	}
@@ -88,7 +92,7 @@ public class SceneGod : MonoBehaviour
 		}
 		
 	}
-	public void EnterDeathState()
+	private void EnterDeathState()
 	{
 		if (_currentState != GameState.Death)
 		{

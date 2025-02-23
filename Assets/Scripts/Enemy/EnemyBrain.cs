@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,8 +6,9 @@ using UnityEngine;
 
 public class EnemyBrain : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _player;
+    public event Action<EnemyBrain, DamageReceiver, DamageEvent> OnDeath;
+
+    private GameObject _player => SceneGod.SInstance.player;
 
     [SerializeField]
     private SpriteRenderer _spr;
@@ -16,6 +18,9 @@ public class EnemyBrain : MonoBehaviour
 
     [SerializeField]
     private Color _aggroColor;
+
+    [SerializeField]
+    private DamageReceiver _dr;
 
     [SerializeField]
     private Animator _anim;
@@ -38,12 +43,16 @@ public class EnemyBrain : MonoBehaviour
 
         _passiveMoveBehaviour.OnMove += HandleMove;
         _aggressiveMoveBehaviour.OnMove += HandleMove;
+
+        _dr.OnDeath += HandleDeath;
     }
 
     private void OnDisable()
     {
         _passiveMoveBehaviour.OnMove -= HandleMove;
         _aggressiveMoveBehaviour.OnMove -= HandleMove;
+
+        _dr.OnDeath -= HandleDeath;
     }
 
     private void Update()
@@ -64,5 +73,10 @@ public class EnemyBrain : MonoBehaviour
     {
         _anim.SetTrigger("Move");
         _spr.transform.rotation = Quaternion.Euler(new Vector3(0,0, (Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg) - 90f));
+    }
+
+    private void HandleDeath(DamageReceiver dr, DamageEvent dmgEvent)
+    {
+        OnDeath?.Invoke(this, dr, dmgEvent);
     }
 }
