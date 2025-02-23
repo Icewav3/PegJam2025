@@ -145,7 +145,7 @@ public class DialogueManager : MonoBehaviour
             },
             new DialogueEntry {
                 characterName = char2Name,
-                dialogue = "Great, then let's begin at once!"
+                dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}." //TODO name corp
             },
             new DialogueEntry {
                 characterName = char1Name,
@@ -219,7 +219,7 @@ public class DialogueManager : MonoBehaviour
             },
             new DialogueEntry {
                 characterName = char2Name,
-                dialogue = "Once it starts to shrink, ready the first injection."
+                dialogue = "Once it starts to shrink, prepare the first injection."
             },
             new DialogueEntry {
                 characterName = char1Name,
