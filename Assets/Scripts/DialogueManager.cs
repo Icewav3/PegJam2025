@@ -214,7 +214,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         isTyping = false;
-        onDialogueComplete.Invoke();
+        onDialogueComplete?.Invoke();
     }
 
     public void SkipTyping()
@@ -224,7 +224,7 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
             dialogueText.text = _currentSequence[_currentDialogueIndex].dialogue;
             isTyping = false;
-            onDialogueComplete.Invoke();
+            onDialogueComplete?.Invoke();
         }
     }
 }
