@@ -17,7 +17,7 @@ public class SceneGod : MonoBehaviour
 	[SerializeField]
 	public GameObject dialogue;
 
-	[SerializeField] public DialogueEvents dialogueEvents;
+	[SerializeField] public DialogueManager DialogueManager;
 	//state
 	private GameState _currentState;
 	
@@ -66,7 +66,7 @@ public class SceneGod : MonoBehaviour
 	{
 		PlayerDeaths += 1;
 		ResetPlayer();
-		EnterDeathState();
+		//EnterDeathState();
 	}
 
 	/// <summary>
