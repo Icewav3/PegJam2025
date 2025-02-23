@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxEnemies: 5
-  _arenaWidth: 30
+  _arenaWidth: 25
   _enemiesToSpawn:
   - {fileID: 8542371092020159622, guid: 7bf9bffbc763b3e409340ef364888bf6, type: 3}
   - {fileID: 8542371092020159622, guid: 2f3da644707a38c428fb3eb4331bbdd0, type: 3}

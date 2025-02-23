@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
         if(_enemies.Count < _maxEnemies)
         {
             Vector2 spawnPos = Random.insideUnitCircle * _arenaWidth;
+            if (Vector2.Distance(spawnPos, SceneGod.SInstance.player.transform.position) < 10) return;
             EnemyBrain enemy = Instantiate(_enemiesToSpawn[Random.Range(0,_enemiesToSpawn.Count)], spawnPos, Quaternion.identity);
             _enemies.Add(enemy);
 
