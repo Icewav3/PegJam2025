@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -19,9 +20,14 @@ public class EnemySpawner : MonoBehaviour
     {
         if(_enemies.Count < _maxEnemies)
         {
+            List<EnemyBrain> valid = _enemiesToSpawn.Where(e => e.MinScore <= SceneGod.SInstance.PlayerScore).Select(e => e.EnemyBrain).ToList();
+
             Vector2 spawnPos = Random.insideUnitCircle * _arenaWidth;
+
             if (Vector2.Distance(spawnPos, SceneGod.SInstance.player.transform.position) < 15) return;
-            EnemyBrain enemy = Instantiate(_enemiesToSpawn[Random.Range(0,_enemiesToSpawn.Count)].EnemyBrain, spawnPos, Quaternion.identity);
+
+            EnemyBrain enemy = Instantiate(valid[Random.Range(0,valid.Count)], spawnPos, Quaternion.identity);
+
             _enemies.Add(enemy);
 
             enemy.OnDeath += HandleDeath;
