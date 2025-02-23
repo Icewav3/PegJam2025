@@ -45,12 +45,10 @@ public class EnemyBrain : MonoBehaviour
         if(_distToPlayer < _detectionRange)
         {
             _aggressiveMoveBehaviour.PerformBehaviour();
-            _spr.color = Color.red;
         }
         else
         {
             _passiveMoveBehaviour.PerformBehaviour();
-            _spr.color = Color.green;
         }
     }
 
