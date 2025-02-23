@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
 
     public UnityEvent onDialogueComplete;
+    private object life_number;
 
     [System.Serializable]
     public struct DialogueEntry
@@ -104,6 +105,103 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry { characterName = char2Name, dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need." },
             new DialogueEntry { characterName = char2Name, dialogue = "Once it starts to shrink, prepare the first injection." },
             new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
+        };
+
+        // This section is deaths for each stage 
+
+        // First (Virus) stage death
+        _dialogueSequences["death_stage1"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Oh, it failed already..."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize pathogen {enemy_type}." // TODO add actual variables here. Hopefully this can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Shall I prepare the next test subject?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Yes, let's keep this moving."
+            }
+        };
+
+        // Second (Bacteria) stage death
+        _dialogueSequences["death_stage2"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Damn, it was doing so well!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Forget about it. We have plenty more subjects to get through."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "*Sigh*. Well, I guess you're right."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize pathogen {enemy_type}." // TODO add actual variables here. Hopefully the number can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Preparing subject Z-{life_number+1} for testing." // TODO add the proper variable and math here (not sure if what I did works in C#)
+            }
+        };
+
+        // Third (Nanobot) stage death
+        _dialogueSequences["death_stage3"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Zlorp, no!"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "How could you let this happen?! You were doing so well!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = $"Hey, {char1Name}, let's keep it moving!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "We still have hundreds more Zlorps to get through today."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "I- I'm not so sure I can keep doing this..."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "You damn well better keep doing it! Remember that contract you signed?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "R-Right... I'm sorry doctor."
+            }
         };
     }
 
