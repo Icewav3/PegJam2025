@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthPool : MonoBehaviour
 {
-    public event Action<HealthPool, float> OnHPChange;
+    public event Action<HealthPool, int> OnHPChange;
 
     [SerializeField]
     private int _startingHealth;
@@ -31,7 +31,7 @@ public class HealthPool : MonoBehaviour
             _health -= damage;
         }
         Debug.Log(_health);
-        OnHPChange?.Invoke(this, damage);
+        OnHPChange?.Invoke(this, -damage);
         return damage;
     }
 

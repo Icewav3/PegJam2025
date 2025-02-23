@@ -12,6 +12,12 @@ public class EnemyBrain : MonoBehaviour
     private SpriteRenderer _spr;
 
     [SerializeField]
+    private Color _passiveColor;
+
+    [SerializeField]
+    private Color _aggroColor;
+
+    [SerializeField]
     private Animator _anim;
 
     [SerializeField]
@@ -45,10 +51,12 @@ public class EnemyBrain : MonoBehaviour
         if(_distToPlayer < _detectionRange)
         {
             _aggressiveMoveBehaviour.PerformBehaviour();
+            _spr.color = _aggroColor;
         }
         else
         {
             _passiveMoveBehaviour.PerformBehaviour();
+            _spr.color = _passiveColor;
         }
     }
 

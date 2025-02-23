@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     private bool _firing = false;
+    private bool _canFire = true;
 
     [SerializeField]
     private Animator _anim;
@@ -22,14 +23,18 @@ public class PlayerFire : MonoBehaviour
     public void StartFire()
     {
         if (_firing) return;
+        if (!_canFire) return;
 
         _firing = true;
+        _canFire = false;
         _anim.SetTrigger("Fire");
     }
 
     public void StopFire()
     {
+        _anim.ResetTrigger("Fire");
         _firing = false;
+        _canFire = true;
     }
 
     private void Update()

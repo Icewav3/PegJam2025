@@ -163,8 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2334616164823813880}
   _spr: {fileID: 5699613652104433150}
+  _passiveColor: {r: 1, g: 1, b: 1, a: 0.78431374}
+  _aggroColor: {r: 1, g: 0.9198113, b: 0.9198113, a: 1}
   _anim: {fileID: 6451333509916356264}
-  _detectionRange: 5
+  _detectionRange: 6
   _passiveMoveBehaviour: {fileID: 742611249307757176}
   _aggressiveMoveBehaviour: {fileID: 2257156892983906826}
 --- !u!114 &742611249307757176
