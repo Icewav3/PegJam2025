@@ -40,6 +40,8 @@ public class EnemyBrain : MonoBehaviour
 
     private float _distToPlayer => Vector2.Distance(transform.position, _player.transform.position);
 
+    public bool InRange => _distToPlayer < _detectionRange;
+
     private void OnEnable()
     {
         _passiveMoveBehaviour.Initialize(_player);
@@ -61,7 +63,7 @@ public class EnemyBrain : MonoBehaviour
 
     private void Update()
     {
-        if(_distToPlayer < _detectionRange)
+        if(InRange)
         {
             _aggressiveMoveBehaviour.PerformBehaviour();
             _spr.color = _aggroColor;

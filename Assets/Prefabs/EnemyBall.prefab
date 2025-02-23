@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 1094949377912605473}
   - component: {fileID: 5506486671418538000}
   - component: {fileID: 6164301577985671792}
+  - component: {fileID: 1674481628386310661}
   m_Layer: 7
   m_Name: EnemyBall
   m_TagString: Untagged
@@ -213,7 +214,7 @@ MonoBehaviour:
   _aggroColor: {r: 1, g: 0.9607843, b: 0.9607843, a: 1}
   _dr: {fileID: 1009807280937560073}
   _anim: {fileID: 6451333509916356264}
-  _detectionRange: 7
+  _detectionRange: 12
   _passiveMoveBehaviour: {fileID: 742611249307757176}
   _aggressiveMoveBehaviour: {fileID: 3740619279168830784}
   _scoreValue: 20
@@ -394,6 +395,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &1674481628386310661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469202474263326186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1060c782fc64a4fb2ae969122c55dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyBrain: {fileID: 8542371092020159622}
+  _projectile: {fileID: 7582898940421485894, guid: 853ed545e9f44a14da066426f20c1d71, type: 3}
+  _shotTime: 5
+  _aggroShotTime: 1.5
+  _minShots: 2
+  _maxShots: 4
 --- !u!1001 &2353965041114332500
 PrefabInstance:
   m_ObjectHideFlags: 0
