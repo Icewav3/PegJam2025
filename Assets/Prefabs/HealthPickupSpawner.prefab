@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9d3c711ac5c4748b516f22d14d8a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pickup: {fileID: 4743192133603512705, guid: 4f9cc53cd5b8e484190de6b62d651cc5, type: 3}
+  _maxPickups: 5
+  _arenaWidth: 25
