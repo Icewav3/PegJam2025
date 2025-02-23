@@ -24,7 +24,7 @@ public class AchievementManager : MonoBehaviour
 
     private void HandleDeath(DamageReceiver dr, DamageEvent dmgEvent)
     {
-        SceneGod.SInstance.DialogueManager.StartDialogueSequence("death");
+        SceneGod.SInstance.DialogueManager.StartDialogueSequence("death_stage1");
     }
 
     private void HandleFire(PlayerFire playerFire)
