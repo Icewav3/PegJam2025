@@ -8,6 +8,8 @@ public class AchievementManager : MonoBehaviour
     private DamageReceiver _dr;
 
     private bool hasFired = false;
+
+    [SerializeField]
     private PlayerFire _playerFire;
 
     private void OnEnable()
