@@ -1,17 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D _rb;
-    [SerializeField]
-    private float _lungeForce = 5f;
-    [SerializeField]
-    private float _lungeDuration = 0.5f;
-    [SerializeField]
-    private Animator _secondaryAnim;
+    public event Action<PlayerMove> OnMove;
+
+    [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private float _lungeForce = 5f;
+    [SerializeField] private float _lungeDuration = 0.5f;
+    [SerializeField] private Animator _secondaryAnim;
 
     private float _timeToLunge = 0;
 
@@ -25,6 +24,7 @@ public class PlayerMove : MonoBehaviour
 
     public void StartMove()
     {
+        OnMove?.Invoke(this);
         _moving = true;
     }
 
@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
     {
         _timeToLunge -= Time.deltaTime;
 
-        if(_timeToLunge < 0 && _moving)
+        if (_timeToLunge < 0 && _moving)
         {
             _timeToLunge = _lungeDuration;
             _rb.AddForce(_lastMoveInput * _lungeForce);
