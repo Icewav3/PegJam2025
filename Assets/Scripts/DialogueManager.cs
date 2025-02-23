@@ -126,19 +126,24 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueEntries = new DialogueEntry[]
         {
+            // Start of intro
             new DialogueEntry { 
                 characterName = char1Name,
-                dialogue = "Hello there! This is entry 1."
+                dialogue = "Incredible..."
             },
             new DialogueEntry {
-                characterName = "Sarah",
-                dialogue = "Welcome to our game! This is entry 2."
+                characterName = char2Name,
+                dialogue = "It really is, isn't it?"
             },
             new DialogueEntry {
-                characterName = "John",
-                dialogue = "Thank you for playing! This is entry 3."
+                characterName = char1Name,
+                dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not sure I could believe it."
             },
-            // Add more entries as needed
+            new DialogueEntry {
+                characterName = char2Name,
+                dialogue = "If you don't mind, could you tell me where—" // it would be nice if this line got cut off extra fast, rather than playing at normal speed
+            },
+            // End of intro
         };
     }
 }
