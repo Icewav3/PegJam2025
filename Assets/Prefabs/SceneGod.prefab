@@ -716,8 +716,6 @@ MonoBehaviour:
   typingSpeed: 0.05
   char1Color: {r: 0, g: 0, b: 0, a: 0}
   char2Color: {r: 0, g: 0, b: 0, a: 0}
-  char1Name: 
-  char2Name: 
   char1Portrait: {fileID: 0}
   char2Portrait: {fileID: 0}
   _playerInput: {fileID: 1106807106575532071}
@@ -1114,7 +1112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3699159935261339958
 RectTransform:
   m_ObjectHideFlags: 0
