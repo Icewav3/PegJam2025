@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
+    public event Action<PlayerFire> OnFire;
+    
     private bool _firing = false;
     private bool _canFire = true;
 
@@ -43,6 +46,7 @@ public class PlayerFire : MonoBehaviour
         {
             _anim.SetTrigger("ReleaseFire");
             Instantiate(_projectile, transform.position, _aimer.transform.rotation);
+            OnFire?.Invoke(this);
             _dr.ReceiveDamage(new DamageEvent(1, gameObject, gameObject));
         }
     }

@@ -71,7 +71,7 @@ public class SceneGod : MonoBehaviour
 	{
 		PlayerDeaths += 1;
 		ResetPlayer();
-		//EnterDeathState();
+		EnterDeathState();
 	}
 
 	/// <summary>
@@ -95,7 +95,8 @@ public class SceneGod : MonoBehaviour
 		{
 			Debug.LogWarning("Already in Game Scene!");
 		}
-		
+		//yes its scuffed
+		DialogueManager.StartDialogueSequence("intro");
 	}
 	private void EnterDeathState()
 	{
