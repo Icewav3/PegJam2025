@@ -34,6 +34,10 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField]
     private EnemyMovementBehaviour _aggressiveMoveBehaviour;
 
+    [SerializeField]
+    private int _scoreValue;
+    public int ScoreValue => _scoreValue;
+
     private float _distToPlayer => Vector2.Distance(transform.position, _player.transform.position);
 
     private void OnEnable()

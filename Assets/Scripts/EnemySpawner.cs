@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     private float _arenaWidth;
 
     [SerializeField]
-    private List<EnemyBrain> _enemiesToSpawn = new List<EnemyBrain>();
+    private List<SpawnableEnemy> _enemiesToSpawn = new List<SpawnableEnemy>();
 
     private List<EnemyBrain> _enemies = new List<EnemyBrain>();
 
@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
         if(_enemies.Count < _maxEnemies)
         {
             Vector2 spawnPos = Random.insideUnitCircle * _arenaWidth;
-            if (Vector2.Distance(spawnPos, SceneGod.SInstance.player.transform.position) < 10) return;
-            EnemyBrain enemy = Instantiate(_enemiesToSpawn[Random.Range(0,_enemiesToSpawn.Count)], spawnPos, Quaternion.identity);
+            if (Vector2.Distance(spawnPos, SceneGod.SInstance.player.transform.position) < 15) return;
+            EnemyBrain enemy = Instantiate(_enemiesToSpawn[Random.Range(0,_enemiesToSpawn.Count)].EnemyBrain, spawnPos, Quaternion.identity);
             _enemies.Add(enemy);
 
             enemy.OnDeath += HandleDeath;
@@ -34,6 +34,20 @@ public class EnemySpawner : MonoBehaviour
 
         _enemies.Remove(brain);
 
+        SceneGod.SInstance.IncrementScore(brain.ScoreValue);
+
         Destroy(brain.gameObject);
     }
+}
+
+[System.Serializable]
+public class SpawnableEnemy
+{
+    [SerializeField]
+    private EnemyBrain _enemyBrain;
+    public EnemyBrain EnemyBrain => _enemyBrain;
+
+    [SerializeField]
+    private int _minScore;
+    public int MinScore => _minScore; 
 }
