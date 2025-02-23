@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8888fb717cc85484395197b211e1e8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEnemies: 5
+  _maxEnemies: 8
   _arenaWidth: 25
   _enemiesToSpawn:
   - _enemyBrain: {fileID: 8542371092020159622, guid: 7bf9bffbc763b3e409340ef364888bf6, type: 3}
     _minScore: 0
   - _enemyBrain: {fileID: 8542371092020159622, guid: 2f3da644707a38c428fb3eb4331bbdd0, type: 3}
     _minScore: 10
+  - _enemyBrain: {fileID: 8542371092020159622, guid: e0cc88cbc30d62944909db5f603b5764, type: 3}
+    _minScore: 0
