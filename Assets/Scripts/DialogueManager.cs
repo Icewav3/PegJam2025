@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private Color char2Color;
     [SerializeField] private string char1Name;
-    [SerializeField] private string char2Name;
+    [SerializeField] private string char2Name = "Dr. Zorbist";
     [SerializeField] private Sprite char1Portrait;
     [SerializeField] private Sprite char2Portrait;
 
@@ -74,11 +74,15 @@ public class DialogueManager : MonoBehaviour
                 dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it."
             },
             new DialogueEntry { characterName = char1Name, dialogue = "If you don't mind, could you tell me where-" },
+<<<<<<< Updated upstream
             new()
             {
                 characterName = char2Name,
                 dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}."
             },
+=======
+            new DialogueEntry { characterName = char2Name, dialogue = $"Great, then let's begin at once! Zorbist Biotics Incorporated is counting on you, {char1Name}." },
+>>>>>>> Stashed changes
             new DialogueEntry { characterName = char1Name, dialogue = "...Right. Commencing test on subject Z-001." }
         };
 
@@ -99,6 +103,7 @@ public class DialogueManager : MonoBehaviour
             },
             new DialogueEntry { characterName = char1Name, dialogue = "I-" },
             new DialogueEntry { characterName = char2Name, dialogue = "But you know what? I like it." },
+<<<<<<< Updated upstream
             new()
             {
                 characterName = char2Name, dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!"
@@ -112,6 +117,11 @@ public class DialogueManager : MonoBehaviour
             {
                 characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..."
             }
+=======
+            new DialogueEntry { characterName = char2Name, dialogue = "From now on, all Z-type specimens shall be referred to as Zlorps!" },
+            new DialogueEntry { characterName = char2Name, dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens." },
+            new DialogueEntry { characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..." }
+>>>>>>> Stashed changes
         };
 
         // Attack tutorial
@@ -127,6 +137,7 @@ public class DialogueManager : MonoBehaviour
         // First attack reaction
         _dialogueSequences["first_attack"] = new List<DialogueEntry>
         {
+<<<<<<< Updated upstream
             new()
             {
                 characterName = char1Name,
@@ -146,6 +157,285 @@ public class DialogueManager : MonoBehaviour
             new() { characterName = char2Name, dialogue = "Once it starts to shrink, prepare the first injection." },
             new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
         };
+=======
+            new DialogueEntry { characterName = char1Name, dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!" },
+            new DialogueEntry { characterName = char1Name, dialogue = "It seems to harden considerably upon contact with the atmosphere." },
+            new DialogueEntry { characterName = char2Name, dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need." },
+            new DialogueEntry { characterName = char2Name, dialogue = "Once it starts to shrink, prepare to release more of the regenerative solution." },
+            new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
+        };
+
+        // Start of bacteria stage reaction (when bacteria start spawning, triggered by certain score?)
+        _dialogueSequences["bacteria_spawn"] = new List<DialogueEntry>
+        {
+             new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Subject has successfully neutralized the target number of viral pathogens."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = $"Excellent progress, {char1Name}! With this, our Zlorps are practically gauranteed to be raking in the profits already!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Now, let's see how the little guy fares against bacteria."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Understood. Now introducing bacterial samples to the test environment."
+            }
+            // Bacteria start spawning after this dialogue, if possible
+        };
+
+        // Start of nanobot stage reaction (when nanobots start spawning, triggered by certain score?)
+        _dialogueSequences["nanobots_spawn"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Doctor, the subject has successfully neutralized the target numbers of all biological specimens!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Great! Now we can push it even further with those deadly Chinese nanobots!"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "O-Oh, right..."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "I, umm... I'm introducing them now..."
+            },
+            // Nanobots start spawning after this dialogue, if possible
+        };
+
+        // First stage death (Virus stage) reaction
+        _dialogueSequences["death_stage1"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Oh, it failed already..."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize pathogen {enemy_type}." // TODO add actual variables here. Hopefully this can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Shall I prepare the next test subject?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Yes, let's keep this moving."
+            }
+        };
+
+        // Second stage death (Bacteria stage)
+        _dialogueSequences["death_stage2"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Damn, it was doing so well!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Forget about it. We have plenty more subjects to get through."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "*Sigh*. Well, I guess you're right."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize pathogen {enemy_type}." // TODO add actual variables here. Hopefully the number can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Preparing subject Z-{life_number+1} for testing." // TODO add the proper variable and math here (not sure if what I did works in C#)
+            }
+        };
+
+        // Third stage death (Nanobot stage)
+        _dialogueSequences["death_stage3"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Zlorp, no!"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "How could you let this happen?! You were doing so well!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = $"Hey, {char1Name}, let's keep it moving!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "We still have hundreds more Zlorps to get through today."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "I- I'm not so sure I can keep doing this..."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "You damn well better keep doing it! Remember that contract you signed?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "R-Right... I'm sorry doctor."
+            }
+        };
+
+        // Player respawn 
+        _dialogueSequences["respawn"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Restarting experiment."
+            },
+            // As player spawns?
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = $"Introducing test subject Z-{life_number}." // TODO verify this variable
+            },
+            // As viruses spawn?
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Re-introducing viral pathogens."
+            }
+        };
+
+        // Player defeats a virus for the first time
+        // This will probably happen very soon after or even during the dialogue reacting to Zlorp's attack method, so this dialogue likely needs to be queued up somehow. This should go for any dialogue that could play at a random time, they could easily overlap
+        _dialogueSequences["virus_defeated"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Subject has neutralized a specimen of the Covid-19 virus."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "As expected of a Zlorp! It's too bad we didn't have any back in 2020, just imagine the profits..." // Salivating
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Are you seriously calling them Zlorps?"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "What, you don't like it?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "..."
+            }
+        };
+
+        // PLayer defeats a bacteria for the first time
+        _dialogueSequences["bacteria_defeated"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "Subject has neutralized a bacterial specimen."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Hmm... I wonder if there would be a market for Zlorps in sewage treatment facilities..."
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "I... I'm not really sure that would be ethical..."
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = $"I'm sorry, what was that {char1Name}?"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "...Nevermind."
+            }
+        };
+
+        // Player defeats a nanobot for the first time
+        _dialogueSequences["nanobot_defeated"] = new List<DialogueEntry>
+        {
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "T-The subject destroyed one of the nanobots!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "WHat?! That's fantastic!"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = "Keep adding more! Let's see exactly what this Glorp is capable of!"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "More?! But doctor, it's-"
+            },
+            new DialogueEntry
+            {
+                characterName = char2Name,
+                dialogue = $"Just add the damn nanobots, {char1Name}! Need I remind you of your contract again?!"
+            },
+            new DialogueEntry
+            {
+                characterName = char1Name,
+                dialogue = "N-No sir... I'll add them."
+            }
+        };
+
+        //_dialogueSequences[""] = new List<DialogueEntry>
+        //{
+
+        //};
+
+>>>>>>> Stashed changes
     }
 
     // Public method to start a dialogue sequence by key
