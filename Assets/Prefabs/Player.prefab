@@ -258,6 +258,7 @@ MonoBehaviour:
   _dr: {fileID: 2174628114062305655}
   _spr: {fileID: 5153043101711623869}
   _rb: {fileID: 6390950351906239543}
+  _playerInputHandler: {fileID: 8992993392725379202}
 --- !u!114 &7172423864872920434
 MonoBehaviour:
   m_ObjectHideFlags: 0

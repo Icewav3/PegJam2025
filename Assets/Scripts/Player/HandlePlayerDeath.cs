@@ -13,6 +13,9 @@ public class HandlePlayerDeath : MonoBehaviour
     [SerializeField]
     private Rigidbody2D _rb;
 
+    [SerializeField]
+    private PlayerInputHandler _playerInputHandler;
+
     private void OnEnable()
     {
         _dr.OnDeath += HandleDeath;
@@ -31,6 +34,7 @@ public class HandlePlayerDeath : MonoBehaviour
     private IEnumerator DeathRoutine()
     {
         _spr.enabled = false;
+        _playerInputHandler.enabled = false;
         _rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
         yield return new WaitForSeconds(2);
