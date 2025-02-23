@@ -37,6 +37,8 @@ public class SpawnHealthOrbs : MonoBehaviour
     {
         if(change < 0)
         {
+            if (_orbs.Count == 0) return;
+
             Destroy(_orbs.First());
             _orbs.Remove(_orbs.First());
         }

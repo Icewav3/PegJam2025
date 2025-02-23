@@ -28,6 +28,8 @@ public class DamageReceiver : MonoBehaviour
 
     public void ReceiveDamage(DamageEvent dmgEvent)
     {
+        if (_healthPool.Health <= 0) return;
+
         int damage = dmgEvent.Damage;
 
         damage -= _healthPool.Damage(damage);
