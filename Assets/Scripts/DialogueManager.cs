@@ -23,9 +23,9 @@ public class DialogueManager : MonoBehaviour
     private Color char1Color;
 
     [SerializeField] private Color char2Color;
-    [SerializeField] private string char1Name = "Dr. Cecil";
+    private string char1Name = "Dr. Cecil";
     public string Char1Name => char1Name;
-    [SerializeField] private string char2Name = "Dr. Zorbist";
+    private string char2Name = "Dr. Zorbist";
     public string Char2Name => char2Name;
     [SerializeField] private Sprite char1Portrait;
     [SerializeField] private Sprite char2Portrait;
@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         get
         {
             if (_currentSequence == null) return null;
+            if(_currentDialogueIndex >= _currentSequence.Count) return null;
             return _currentSequence[_currentDialogueIndex];
         }
     }

@@ -20,14 +20,21 @@ public class DisplayCharacterPortrait : MonoBehaviour
     {
         if (_dm.CurrentEntry == null) return;
 
+        _portrait.enabled = true;
         DialogueEntry entry = (DialogueEntry)_dm.CurrentEntry;
-        if(entry.characterName == _dm.Char1Name)
+        Debug.Log(entry.dialogue);
+        Debug.Log(entry.characterName);
+        if (entry.characterName == _dm.Char1Name)
         {
             _portrait.sprite = _char1Sprite;
         }
-        else
+        else if(entry.characterName == _dm.Char2Name) 
         {
             _portrait.sprite = _char2Sprite;
+        }
+        else
+        {
+            _portrait.enabled = false;
         }
     }
 }
