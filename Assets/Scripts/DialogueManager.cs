@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using System.Collections;
@@ -11,8 +12,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
 
-    [Header("Character configs")]
-    [SerializeField] private Color char1Color;
+    [Header("Character configs")] [SerializeField]
+    private Color char1Color;
+
     [SerializeField] private Color char2Color;
     [SerializeField] private string char1Name;
     [SerializeField] private string char2Name;
@@ -27,7 +29,8 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private Coroutine typingCoroutine;
 
-    public UnityEvent onDialogueComplete;
+    private object life_number;
+    public event Action onDialogueComplete;
 
     [System.Serializable]
     public struct DialogueEntry
@@ -65,9 +68,17 @@ public class DialogueManager : MonoBehaviour
         {
             new DialogueEntry { characterName = char1Name, dialogue = "Incredible..." },
             new DialogueEntry { characterName = char2Name, dialogue = "It really is, isn't it?" },
-            new DialogueEntry { characterName = char1Name, dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it." },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it."
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "If you don't mind, could you tell me where-" },
-            new DialogueEntry { characterName = char2Name, dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}." },
+            new()
+            {
+                characterName = char2Name,
+                dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}."
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "...Right. Commencing test on subject Z-001." }
         };
 
@@ -82,27 +93,57 @@ public class DialogueManager : MonoBehaviour
         {
             new DialogueEntry { characterName = char2Name, dialogue = "Oh, it's a lively one! Excellent!" },
             new DialogueEntry { characterName = char1Name, dialogue = "It's interesting how it moves so... glorpily." },
-            new DialogueEntry { characterName = char2Name, dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" },
+            new()
+            {
+                characterName = char2Name, dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!"
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "I-" },
             new DialogueEntry { characterName = char2Name, dialogue = "But you know what? I like it." },
-            new DialogueEntry { characterName = char2Name, dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!" },
-            new DialogueEntry { characterName = char2Name, dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens." },
-            new DialogueEntry { characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..." }
+            new()
+            {
+                characterName = char2Name, dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!"
+            },
+            new()
+            {
+                characterName = char2Name,
+                dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens."
+            },
+            new()
+            {
+                characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..."
+            }
         };
 
         // Attack tutorial
         _dialogueSequences["attack_tutorial"] = new List<DialogueEntry>
         {
-            new DialogueEntry { characterName = " ", dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" }
+            new()
+            {
+                characterName = " ",
+                dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)"
+            }
         };
 
         // First attack reaction
         _dialogueSequences["first_attack"] = new List<DialogueEntry>
         {
-            new DialogueEntry { characterName = char1Name, dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!" },
-            new DialogueEntry { characterName = char1Name, dialogue = "It seems to harden considerably upon contact with the atmosphere." },
-            new DialogueEntry { characterName = char2Name, dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need." },
-            new DialogueEntry { characterName = char2Name, dialogue = "Once it starts to shrink, prepare the first injection." },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!"
+            },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "It seems to harden considerably upon contact with the atmosphere."
+            },
+            new()
+            {
+                characterName = char2Name,
+                dialogue =
+                    "The problem is that its regenerative abilities aren't great enough to keep up the pace we need."
+            },
+            new() { characterName = char2Name, dialogue = "Once it starts to shrink, prepare the first injection." },
             new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
         };
     }
