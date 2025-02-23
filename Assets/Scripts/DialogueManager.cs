@@ -51,7 +51,10 @@ public class DialogueManager : MonoBehaviour
 
     private void HandleSkipDialog(InputAction.CallbackContext ctx)
     {
-        SkipTyping();
+        if (isTyping)
+            SkipTyping();
+        else
+            ShowNextDialogue();
     }
 
     private void Start()
@@ -68,9 +71,17 @@ public class DialogueManager : MonoBehaviour
         {
             new DialogueEntry { characterName = char1Name, dialogue = "Incredible..." },
             new DialogueEntry { characterName = char2Name, dialogue = "It really is, isn't it?" },
-            new DialogueEntry { characterName = char1Name, dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it." },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it."
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "If you don't mind, could you tell me where-" },
-            new DialogueEntry { characterName = char2Name, dialogue = $"Great, then let's begin at once! ZorBio Incorporated is counting on you, {char1Name}." },
+            new()
+            {
+                characterName = char2Name,
+                dialogue = $"Great, then let's begin at once! ZorBio Incorporated is counting on you, {char1Name}."
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "...Right. Commencing test on subject Z-001." }
         };
 
@@ -85,34 +96,68 @@ public class DialogueManager : MonoBehaviour
         {
             new DialogueEntry { characterName = char2Name, dialogue = "Oh, it's a lively one! Excellent!" },
             new DialogueEntry { characterName = char1Name, dialogue = "It's interesting how it moves so... glorpily." },
-            new DialogueEntry { characterName = char2Name, dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" },
+            new()
+            {
+                characterName = char2Name, dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!"
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "I-" },
             new DialogueEntry { characterName = char2Name, dialogue = "But you know what? I like it." },
-            new DialogueEntry { characterName = char2Name, dialogue = "From now on, Z-type specimens shall be referred to as Zlorps!" },
-            new DialogueEntry { characterName = char2Name, dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens." },
-            new DialogueEntry { characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..." }
+            new()
+            {
+                characterName = char2Name, dialogue = "From now on, Z-type specimens shall be referred to as Zlorps!"
+            },
+            new()
+            {
+                characterName = char2Name,
+                dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens."
+            },
+            new()
+            {
+                characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..."
+            }
         };
 
         // Attack tutorial
         _dialogueSequences["attack_tutorial"] = new List<DialogueEntry>
         {
-            new DialogueEntry { characterName = " ", dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" }
+            new()
+            {
+                characterName = " ",
+                dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)"
+            }
         };
 
         // First attack reaction
         _dialogueSequences["first_attack"] = new List<DialogueEntry>
         {
-            new DialogueEntry { characterName = char1Name, dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!" },
-            new DialogueEntry { characterName = char1Name, dialogue = "It seems to harden considerably upon contact with the atmosphere." },
-            new DialogueEntry { characterName = char2Name, dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need." },
-            new DialogueEntry { characterName = char2Name, dialogue = "Once it starts to shrink, prepare to release more of the regenerative solution." },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!"
+            },
+            new()
+            {
+                characterName = char1Name,
+                dialogue = "It seems to harden considerably upon contact with the atmosphere."
+            },
+            new()
+            {
+                characterName = char2Name,
+                dialogue =
+                    "The problem is that its regenerative abilities aren't great enough to keep up the pace we need."
+            },
+            new()
+            {
+                characterName = char2Name,
+                dialogue = "Once it starts to shrink, prepare to release more of the regenerative solution."
+            },
             new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
         };
 
         // Start of bacteria stage reaction (when bacteria start spawning, triggered by certain score?)
         _dialogueSequences["bacteria_spawn"] = new List<DialogueEntry>
         {
-             new DialogueEntry
+            new DialogueEntry
             {
                 characterName = char1Name,
                 dialogue = "Subject has successfully neutralized the target number of viral pathogens."
@@ -120,7 +165,8 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry
             {
                 characterName = char2Name,
-                dialogue = $"Excellent progress, {char1Name}! With this, our Zlorps are practically gauranteed to be raking in the profits already!"
+                dialogue =
+                    $"Excellent progress, {char1Name}! With this, our Zlorps are practically gauranteed to be raking in the profits already!"
             },
             new DialogueEntry
             {
@@ -141,7 +187,8 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry
             {
                 characterName = char1Name,
-                dialogue = "Doctor, the subject has successfully neutralized the target numbers of all biological specimens!"
+                dialogue =
+                    "Doctor, the subject has successfully neutralized the target numbers of all biological specimens!"
             },
             new DialogueEntry
             {
@@ -173,7 +220,8 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry
             {
                 characterName = char1Name,
-                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize a pathogen." // TODO add actual variables here. Hopefully this can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+                dialogue =
+                    $"Subject Z-{life_number}, failure to evade or neutralize a pathogen." // TODO add actual variables here. Hopefully this can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
             },
             new DialogueEntry
             {
@@ -209,12 +257,14 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry
             {
                 characterName = char1Name,
-                dialogue = $"Subject Z-{life_number}, failure to evade or neutralize a pathogen." // TODO add actual variables here. Hopefully the number can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
+                dialogue =
+                    $"Subject Z-{life_number}, failure to evade or neutralize a pathogen." // TODO add actual variables here. Hopefully the number can be in a format with zeroes if its less than 3 digits, like 001, 002, 023, etc.
             },
             new DialogueEntry
             {
                 characterName = char1Name,
-                dialogue = $"Preparing subject Z-{life_number} for testing." // TODO add the proper variable and math here (not sure if what I did works in C#)
+                dialogue =
+                    $"Preparing subject Z-{life_number} for testing." // TODO add the proper variable and math here (not sure if what I did works in C#)
             }
         };
 
@@ -293,7 +343,8 @@ public class DialogueManager : MonoBehaviour
             new DialogueEntry
             {
                 characterName = char2Name,
-                dialogue = "As expected of a Zlorp! It's too bad we didn't have any back in 2020, just imagine the profits..." // Salivating
+                dialogue =
+                    "As expected of a Zlorp! It's too bad we didn't have any back in 2020, just imagine the profits..." // Salivating
             },
             new DialogueEntry
             {
@@ -399,7 +450,8 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentDialogueIndex >= _currentSequence.Count)
         {
-            this.gameObject.SetActive(false);
+            if (SceneGod.SInstance._currentState == SceneGod.GameState.Intro) SceneGod.SInstance.EnterGameState();
+
             return;
         }
 
