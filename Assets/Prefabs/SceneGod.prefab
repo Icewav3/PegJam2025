@@ -707,8 +707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c66332def4410887c7db88198aebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  dialogueText: {fileID: 0}
+  nameText: {fileID: 2247049944450117198}
+  dialogueText: {fileID: 3854788587446350307}
   typingSpeed: 0.05
   onDialogueComplete:
     m_PersistentCalls:
@@ -1170,6 +1170,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3699159935261339958}
     m_Modifications:
+    - target: {fileID: 1740331790041184555, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_Name
+      value: DialogueText
+      objectReference: {fileID: 0}
     - target: {fileID: 2995335326422851420, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1295,6 +1299,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+--- !u!114 &2247049944450117198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5069595242637064145, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+  m_PrefabInstance: {fileID: 6446324555876587935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3854788587446350307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+  m_PrefabInstance: {fileID: 6446324555876587935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8134736346615514819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2995335326422851420, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
