@@ -21,6 +21,6 @@ public class FirstPlayerDeathDialogue : MonoBehaviour
 
     private void HandleDeath(DamageReceiver dr, DamageEvent dmgEvent)
     {
-        SceneGod.SInstance.dialogueEvents.
+        SceneGod.SInstance.DialogueManager.StartDialogueSequence("intro");
     }
 }
