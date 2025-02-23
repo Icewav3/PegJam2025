@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
 
-    [Header("Character configs")] [SerializeField]
-    private Color char1Color;
-
+    [Header("Character configs")]
+    [SerializeField] private Color char1Color;
     [SerializeField] private Color char2Color;
     [SerializeField] private string char1Name;
     [SerializeField] private string char2Name;
@@ -21,17 +21,14 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private PlayerInput _playerInput;
 
-    //private vars
-    private DialogueEntry[] dialogueEntries;
+    private Dictionary<string, List<DialogueEntry>> _dialogueSequences;
+    private List<DialogueEntry> _currentSequence;
     private int _currentDialogueIndex = -1;
     private bool isTyping = false;
-
     private Coroutine typingCoroutine;
 
-    //Events
     public UnityEvent onDialogueComplete;
 
-    // Dialogue entry struct to hold both name and dialogue
     [System.Serializable]
     public struct DialogueEntry
     {
@@ -54,42 +51,108 @@ public class DialogueManager : MonoBehaviour
         SkipTyping();
     }
 
-    // Call this from Unity Events to show next dialogue
+    private void Start()
+    {
+        InitializeDialogueSequences();
+    }
+
+    private void InitializeDialogueSequences()
+    {
+        _dialogueSequences = new Dictionary<string, List<DialogueEntry>>();
+
+        // Introduction sequence
+        _dialogueSequences["intro"] = new List<DialogueEntry>
+        {
+            new DialogueEntry { characterName = char1Name, dialogue = "Incredible..." },
+            new DialogueEntry { characterName = char2Name, dialogue = "It really is, isn't it?" },
+            new DialogueEntry { characterName = char1Name, dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it." },
+            new DialogueEntry { characterName = char1Name, dialogue = "If you don't mind, could you tell me where-" },
+            new DialogueEntry { characterName = char2Name, dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}." },
+            new DialogueEntry { characterName = char1Name, dialogue = "...Right. Commencing test on subject Z-001." }
+        };
+
+        // Movement tutorial
+        _dialogueSequences["movement_tutorial"] = new List<DialogueEntry>
+        {
+            new DialogueEntry { characterName = " ", dialogue = "(Use WASD to move!)" }
+        };
+
+        // Movement reaction
+        _dialogueSequences["movement_reaction"] = new List<DialogueEntry>
+        {
+            new DialogueEntry { characterName = char2Name, dialogue = "Oh, it's a lively one! Excellent!" },
+            new DialogueEntry { characterName = char1Name, dialogue = "It's interesting how it moves so... glorpily." },
+            new DialogueEntry { characterName = char2Name, dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" },
+            new DialogueEntry { characterName = char1Name, dialogue = "I-" },
+            new DialogueEntry { characterName = char2Name, dialogue = "But you know what? I like it." },
+            new DialogueEntry { characterName = char2Name, dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!" },
+            new DialogueEntry { characterName = char2Name, dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens." },
+            new DialogueEntry { characterName = char1Name, dialogue = "R-Right, introducing viral samples to the test enviroment..." }
+        };
+
+        // Attack tutorial
+        _dialogueSequences["attack_tutorial"] = new List<DialogueEntry>
+        {
+            new DialogueEntry { characterName = " ", dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" }
+        };
+
+        // First attack reaction
+        _dialogueSequences["first_attack"] = new List<DialogueEntry>
+        {
+            new DialogueEntry { characterName = char1Name, dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!" },
+            new DialogueEntry { characterName = char1Name, dialogue = "It seems to harden considerably upon contact with the atmosphere." },
+            new DialogueEntry { characterName = char2Name, dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need." },
+            new DialogueEntry { characterName = char2Name, dialogue = "Once it starts to shrink, prepare the first injection." },
+            new DialogueEntry { characterName = char1Name, dialogue = "Got it." }
+        };
+    }
+
+    // Public method to start a dialogue sequence by key
+    public void StartDialogueSequence(string sequenceKey)
+    {
+        if (_dialogueSequences.TryGetValue(sequenceKey, out List<DialogueEntry> sequence))
+        {
+            _currentSequence = sequence;
+            _currentDialogueIndex = -1;
+            ShowNextDialogue();
+        }
+        else
+        {
+            Debug.LogWarning($"Dialogue sequence '{sequenceKey}' not found!");
+        }
+    }
+
     public void ShowNextDialogue()
     {
         _currentDialogueIndex++;
 
-        // Disable if we reach the end
-        if (_currentDialogueIndex >= dialogueEntries.Length)
+        if (_currentDialogueIndex >= _currentSequence.Count)
         {
             this.gameObject.SetActive(false);
+            return;
         }
 
-        ShowDialogue(dialogueEntries[_currentDialogueIndex]);
+        ShowDialogue(_currentSequence[_currentDialogueIndex]);
     }
 
-    // Call this to show a specific dialogue entry
     public void ShowDialogueEntry(int index)
     {
-        if (index >= 0 && index < dialogueEntries.Length)
+        if (_currentSequence != null && index >= 0 && index < _currentSequence.Count)
         {
             _currentDialogueIndex = index;
-            ShowDialogue(dialogueEntries[index]);
+            ShowDialogue(_currentSequence[index]);
         }
     }
 
     private void ShowDialogue(DialogueEntry entry)
     {
-        // Update name immediately
         nameText.text = entry.characterName;
 
-        // Stop any existing typing
         if (isTyping)
         {
             StopCoroutine(typingCoroutine);
         }
 
-        // Start typing new text
         typingCoroutine = StartCoroutine(TypeText(entry.dialogue));
     }
 
@@ -113,152 +176,14 @@ public class DialogueManager : MonoBehaviour
         onDialogueComplete.Invoke();
     }
 
-    //TODO cate can u make this go when pressing space??
-
-    // i did yw <3
     public void SkipTyping()
     {
         if (isTyping)
         {
             StopCoroutine(typingCoroutine);
-            dialogueText.text = dialogueEntries[_currentDialogueIndex].dialogue;
+            dialogueText.text = _currentSequence[_currentDialogueIndex].dialogue;
             isTyping = false;
             onDialogueComplete.Invoke();
         }
-    }
-
-    // Dialogue entries
-    public void Awake()
-    {
-        dialogueEntries = new DialogueEntry[]
-        {
-            // Start of intro
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "Incredible..."
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = "It really is, isn't it?"
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it."
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue =
-                    "If you don't mind, could you tell me where-" // it would be nice if this line got cut off extra fast, rather than playing at normal speed (if easy to do)
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = $"Great, then let's begin at once! TODO:Name Incorporated is counting on you, {char1Name}." //TODO name corp
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "...Right. Commencing test on subject Z-001."
-            },
-            // End of intro
-
-            // First tutorial text, stays on the screen until the player starts moving
-            new DialogueEntry
-            {
-                characterName =
-                    " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
-                dialogue = "(Use WASD to move!)" // This should use a variable for keybinds if they are rebindable
-            },
-            //End of first tutorial text
-
-            // Start of event dialogue: Player starts moving
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = "Oh, it's a lively one! Excellent!"
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "It's interesting how it moves so... glorpily."
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue =
-                    $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" // I think this works but double check for me I never use C#
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "I-" // Another line that should be cut off fast if possible
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = "But you know what? I like it."
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!"
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens."
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "R-Right, introducing viral samples to the test enviroment..."
-            },
-            // End of event dialogue
-
-            // Virus enemies start spawning
-
-            // Second tutorial text, stays on screen until the player attacks once
-            new DialogueEntry
-            {
-                characterName =
-                    " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
-                dialogue =
-                    "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" // This should use a variable if there are different control methods
-            },
-            // End of second tutorial text
-
-            // Start of dialogue event: Player attacks for the first time
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!"
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "It seems to harden considerably upon contact with the atmosphere."
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue =
-                    "The problem is that its regenerative abilities aren't great enough to keep up the pace we need."
-            },
-            new DialogueEntry
-            {
-                characterName = char2Name,
-                dialogue = "Once it starts to shrink, prepare the first injection."
-            },
-            new DialogueEntry
-            {
-                characterName = char1Name,
-                dialogue = "Got it."
-            },
-            // End of event dialogue
-        };
     }
 }
