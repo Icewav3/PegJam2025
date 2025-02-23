@@ -22,8 +22,6 @@ public class DisplayCharacterPortrait : MonoBehaviour
 
         _portrait.enabled = true;
         DialogueEntry entry = (DialogueEntry)_dm.CurrentEntry;
-        Debug.Log(entry.dialogue);
-        Debug.Log(entry.characterName);
         if (entry.characterName == _dm.Char1Name)
         {
             _portrait.sprite = _char1Sprite;
