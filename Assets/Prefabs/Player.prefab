@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 7387393666127874243}
   - component: {fileID: 1927906720172301193}
   - component: {fileID: 7172423864872920434}
+  - component: {fileID: -899117482889853525}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -273,6 +274,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dr: {fileID: 2174628114062305655}
   _deathParticles: {fileID: 6442351099827588113, guid: b853b15499f02e04e844aa66e5e2b137, type: 3}
+--- !u!114 &-899117482889853525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745031063391069799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c81e69f6ec4d02ab310528708553a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dr: {fileID: 2174628114062305655}
+  _pickup: {fileID: 0}
 --- !u!1 &3601735611542162217
 GameObject:
   m_ObjectHideFlags: 0

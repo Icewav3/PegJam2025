@@ -6,8 +6,6 @@ public class FirstPlayerDeathDialogue : MonoBehaviour
 {
     [SerializeField]
     private DamageReceiver _dr;
-    [SerializeField]
-    private HealthPickup _pickup;
 
     private void OnEnable()
     {

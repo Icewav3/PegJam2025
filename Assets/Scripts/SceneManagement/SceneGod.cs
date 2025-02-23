@@ -51,6 +51,11 @@ public class SceneGod : MonoBehaviour
 		}
 	}
 
+	private void Start()
+	{
+		DialogueManager = dialogue.GetComponent<DialogueManager>();
+	}
+
 	/// <summary>
 	/// Increases the player's score by the specified value.
 	/// </summary>
