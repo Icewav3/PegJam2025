@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789656f5d92b4c043a4dcf12f63f01c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2334616164823813880}
   _spr: {fileID: 5699613652104433150}
   _passiveColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   _aggroColor: {r: 1, g: 0.9198113, b: 0.9198113, a: 1}
+  _dr: {fileID: 1009807280937560073}
   _anim: {fileID: 6451333509916356264}
   _detectionRange: 6
   _passiveMoveBehaviour: {fileID: 742611249307757176}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _team: 0
   _healthPool: {fileID: 3503820105575538399}
-  _destroyOnDeath: 1
+  _destroyOnDeath: 0
 --- !u!114 &6066613209278765412
 MonoBehaviour:
   m_ObjectHideFlags: 0
