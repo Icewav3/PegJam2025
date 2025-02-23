@@ -9,19 +9,25 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
-    [Header("Character configs")]
-    [SerializeField] private Color char1Color;
+
+    [Header("Character configs")] [SerializeField]
+    private Color char1Color;
+
     [SerializeField] private Color char2Color;
     [SerializeField] private string char1Name;
     [SerializeField] private string char2Name;
     [SerializeField] private Sprite char1Portrait;
     [SerializeField] private Sprite char2Portrait;
+
     [SerializeField] private PlayerInput _playerInput;
+
     //private vars
     private DialogueEntry[] dialogueEntries;
     private int _currentDialogueIndex = -1;
     private bool isTyping = false;
+
     private Coroutine typingCoroutine;
+
     //Events
     public UnityEvent onDialogueComplete;
 
@@ -52,7 +58,7 @@ public class DialogueManager : MonoBehaviour
     public void ShowNextDialogue()
     {
         _currentDialogueIndex++;
-        
+
         // Disable if we reach the end
         if (_currentDialogueIndex >= dialogueEntries.Length)
         {
@@ -120,76 +126,94 @@ public class DialogueManager : MonoBehaviour
             onDialogueComplete.Invoke();
         }
     }
-    
+
     // Dialogue entries
     public void Awake()
     {
         dialogueEntries = new DialogueEntry[]
         {
             // Start of intro
-            new DialogueEntry { 
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "Incredible..."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "It really is, isn't it?"
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "Yes! Honestly, if I hadn't seen it myself, I'm not even sure I could believe it."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
-                dialogue = "If you don't mind, could you tell me where—" // it would be nice if this line got cut off extra fast, rather than playing at normal speed (if easy to do)
+                dialogue =
+                    "If you don't mind, could you tell me where?" // it would be nice if this line got cut off extra fast, rather than playing at normal speed (if easy to do)
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "Great, then let's begin at once!"
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "...Right. Commencing test on subject Z-001."
             },
             // End of intro
 
             // First tutorial text, stays on the screen until the player starts moving
-            new DialogueEntry {
-                characterName = " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
+            new DialogueEntry
+            {
+                characterName =
+                    " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
                 dialogue = "(Use WASD to move!)" // This should use a variable for keybinds if they are rebindable
             },
             //End of first tutorial text
 
             // Start of event dialogue: Player starts moving
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "Oh, it's a lively one! Excellent!"
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "It's interesting how it moves so... glorpily."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
-                dialogue = $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" // I think this works but double check for me I never use C#
+                dialogue =
+                    $"Hah! Glorpily?! I thought you were a scientist, {char1Name}!" // I think this works but double check for me I never use C#
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "I-" // Another line that should be cut off fast if possible
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "But you know what? I like it."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "From now on, all Z-type specimens shall be referred to as Zlorp!"
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = $"And now, {char1Name}, it's time to introduce the first wave of pathogens."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "R-Right, introducing viral samples to the test enviroment..."
             },
@@ -198,30 +222,39 @@ public class DialogueManager : MonoBehaviour
             // Virus enemies start spawning
 
             // Second tutorial text, stays on screen until the player attacks once
-            new DialogueEntry {
-                characterName = " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
-                dialogue = "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" // This should use a variable if there are different control methods
+            new DialogueEntry
+            {
+                characterName =
+                    " ", // I wasn't sure if null would work here, but basically we just want the name to be empty for this
+                dialogue =
+                    "(Click and hold to prepare your attack. Use your mouse to aim before releasing it!)" // This should use a variable if there are different control methods
             },
             // End of second tutorial text
 
             // Start of dialogue event: Player attacks for the first time
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "Fascinating... it appears the subject makes use of its own cytoplasm to create projectiles!"
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "It seems to harden considerably upon contact with the atmosphere."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
-                dialogue = "The problem is that its regenerative abilities aren't great enough to keep up the pace we need."
+                dialogue =
+                    "The problem is that its regenerative abilities aren't great enough to keep up the pace we need."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char2Name,
                 dialogue = "Once it starts to shrink, ready the first injection."
             },
-            new DialogueEntry {
+            new DialogueEntry
+            {
                 characterName = char1Name,
                 dialogue = "Got it."
             },
