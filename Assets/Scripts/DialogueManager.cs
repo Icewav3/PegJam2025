@@ -9,14 +9,21 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
-    [SerializeField]
-    private PlayerInput _playerInput;
-    
-    public UnityEvent onDialogueComplete;
-    
+    [Header("Character configs")]
+    [SerializeField] private Color char1Color;
+    [SerializeField] private Color char2Color;
+    [SerializeField] private string char1Name;
+    [SerializeField] private string char2Name;
+    [SerializeField] private Sprite char1Portrait;
+    [SerializeField] private Sprite char2Portrait;
+    [SerializeField] private PlayerInput _playerInput;
+    //private vars
+    private DialogueEntry[] dialogueEntries;
     private int _currentDialogueIndex = -1;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
+    //Events
+    public UnityEvent onDialogueComplete;
 
     // Dialogue entry struct to hold both name and dialogue
     [System.Serializable]
@@ -115,20 +122,23 @@ public class DialogueManager : MonoBehaviour
     }
     
     // Dialogue entries
-    private DialogueEntry[] dialogueEntries = new DialogueEntry[]
+    public void Awake()
     {
-        new DialogueEntry { 
-            characterName = "John",
-            dialogue = "Hello there! This is entry 1."
-        },
-        new DialogueEntry {
-            characterName = "Sarah",
-            dialogue = "Welcome to our game! This is entry 2."
-        },
-        new DialogueEntry {
-            characterName = "John",
-            dialogue = "Thank you for playing! This is entry 3."
-        },
-        // Add more entries as needed
-    };
+        dialogueEntries = new DialogueEntry[]
+        {
+            new DialogueEntry { 
+                characterName = char1Name,
+                dialogue = "Hello there! This is entry 1."
+            },
+            new DialogueEntry {
+                characterName = "Sarah",
+                dialogue = "Welcome to our game! This is entry 2."
+            },
+            new DialogueEntry {
+                characterName = "John",
+                dialogue = "Thank you for playing! This is entry 3."
+            },
+            // Add more entries as needed
+        };
+    }
 }
