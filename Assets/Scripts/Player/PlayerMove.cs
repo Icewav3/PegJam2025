@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
     private float _lungeForce = 5f;
     [SerializeField]
     private float _lungeDuration = 0.5f;
+    [SerializeField]
+    private Animator _secondaryAnim;
 
     private float _timeToLunge = 0;
 
@@ -39,6 +41,7 @@ public class PlayerMove : MonoBehaviour
         {
             _timeToLunge = _lungeDuration;
             _rb.AddForce(_lastMoveInput * _lungeForce);
+            _secondaryAnim.SetTrigger("Move");
         }
     }
 }
