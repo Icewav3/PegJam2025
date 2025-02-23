@@ -15,6 +15,8 @@ public struct DialogueEntry
 
 public class DialogueManager : MonoBehaviour
 {
+    public event Action<DialogueManager> OnSequenceComplete;
+
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
@@ -464,9 +466,14 @@ public class DialogueManager : MonoBehaviour
         if (_currentDialogueIndex >= _currentSequence.Count)
         {
             if (SceneGod.SInstance._currentState == SceneGod.GameState.Intro)
+            {
                 SceneGod.SInstance.EnterGameState();
+            }
             else
+            {
                 SceneGod.SInstance.dialogue.SetActive(false);
+            }
+            OnSequenceComplete?.Invoke(this);
         }
         else
         {

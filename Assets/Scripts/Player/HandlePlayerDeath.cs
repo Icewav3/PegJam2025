@@ -28,16 +28,23 @@ public class HandlePlayerDeath : MonoBehaviour
 
     private void HandleDeath(DamageReceiver dr, DamageEvent dmgEvent)
     {
+        _spr.enabled = false;
+        _playerInputHandler.enabled = false;
+        _rb.constraints = RigidbodyConstraints2D.FreezePosition;
+
+        SceneGod.SInstance.DialogueManager.OnSequenceComplete += HandleDialogueComplete;
+    }
+
+    private void HandleDialogueComplete(DialogueManager dm)
+    {
+        SceneGod.SInstance.DialogueManager.OnSequenceComplete -= HandleDialogueComplete;
+
         StartCoroutine(DeathRoutine());
     }
 
     private IEnumerator DeathRoutine()
     {
-        _spr.enabled = false;
-        _playerInputHandler.enabled = false;
-        _rb.constraints = RigidbodyConstraints2D.FreezePosition;
-
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         SceneGod.SInstance.IncrementDeaths();
     }
