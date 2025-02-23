@@ -18,6 +18,8 @@ public class HealthPickupSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (Random.Range(0, 300) < 299) return;
+
         if (_pickups.Count < _maxPickups)
         {
             Vector2 spawnPos = Random.insideUnitCircle * _arenaWidth;
