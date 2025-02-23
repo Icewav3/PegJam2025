@@ -288,6 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dr: {fileID: 2174628114062305655}
   _playerFire: {fileID: 2950291995786555575}
+  _playerMove: {fileID: 8060870905260313326}
 --- !u!1 &3601735611542162217
 GameObject:
   m_ObjectHideFlags: 0

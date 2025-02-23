@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
 
-    [Header("Character configs")][SerializeField]
+    [Header("Character configs")] [SerializeField]
     private Color char1Color;
 
     [SerializeField] private Color char2Color;
@@ -34,8 +34,9 @@ public class DialogueManager : MonoBehaviour
 
     private Dictionary<string, List<DialogueEntry>> _dialogueSequences;
     private List<DialogueEntry> _currentSequence;
-    public DialogueEntry? CurrentEntry 
-    { 
+
+    public DialogueEntry? CurrentEntry
+    {
         get
         {
             if (_currentSequence == null) return null;
@@ -43,6 +44,7 @@ public class DialogueManager : MonoBehaviour
             return _currentSequence[_currentDialogueIndex];
         }
     }
+
     private int _currentDialogueIndex = -1;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
@@ -461,12 +463,16 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentDialogueIndex >= _currentSequence.Count)
         {
-            if (SceneGod.SInstance._currentState == SceneGod.GameState.Intro) SceneGod.SInstance.EnterGameState();
-
-            return;
+            if (SceneGod.SInstance._currentState == SceneGod.GameState.Intro)
+                SceneGod.SInstance.EnterGameState();
+            else
+                SceneGod.SInstance.dialogue.SetActive(false);
         }
-
-        ShowDialogue(_currentSequence[_currentDialogueIndex]);
+        else
+        {
+            SceneGod.SInstance.dialogue.SetActive(true);
+            ShowDialogue(_currentSequence[_currentDialogueIndex]);
+        }
     }
 
     public void ShowDialogueEntry(int index)
