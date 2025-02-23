@@ -13,7 +13,10 @@ public class SceneGod : MonoBehaviour
 	private string mainMenuScene;
 	public static SceneGod SInstance { get; private set; }
 	public enum GameState { Death, Game, MainMenu, Quit }
-
+	
+	[SerializeField]
+	private GameObject dialogue;
+	
 	private GameState _currentState;
 	
 	//player variables
@@ -77,11 +80,13 @@ public class SceneGod : MonoBehaviour
 		{
 			_currentState = GameState.Game;
 			SceneManager.LoadScene(gameScene);
+			dialogue.SetActive(true);
 		}
 		else
 		{
 			Debug.LogWarning("Already in Game Scene!");
 		}
+		
 	}
 	public void EnterDeathState()
 	{
@@ -89,6 +94,7 @@ public class SceneGod : MonoBehaviour
 		{
 			_currentState = GameState.Death;
 			SceneManager.LoadScene(deathScene);
+			dialogue.SetActive(false);
 		}
 		else
 		{
