@@ -317,6 +317,7 @@ MonoBehaviour:
   gameScene: GameScene
   mainMenuScene: MainMenuScene
   dialogue: {fileID: 3973187884169182029}
+  DialogueManager: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &1103243229021618886
 GameObject:
@@ -719,9 +720,6 @@ MonoBehaviour:
   char1Portrait: {fileID: 0}
   char2Portrait: {fileID: 0}
   _playerInput: {fileID: 1106807106575532071}
-  onDialogueComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1106807106575532071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1295,6 +1293,10 @@ PrefabInstance:
     - target: {fileID: 4353176088072835533, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_Name
       value: DialogueBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353176088072835533, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069595242637064145, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_fontSize
