@@ -711,6 +711,12 @@ MonoBehaviour:
   nameText: {fileID: 2247049944450117198}
   dialogueText: {fileID: 3854788587446350307}
   typingSpeed: 0.05
+  char1Color: {r: 0, g: 0, b: 0, a: 0}
+  char2Color: {r: 0, g: 0, b: 0, a: 0}
+  char1Name: 
+  char2Name: 
+  char1Portrait: {fileID: 0}
+  char2Portrait: {fileID: 0}
   _playerInput: {fileID: 1106807106575532071}
   onDialogueComplete:
     m_PersistentCalls:
@@ -1304,7 +1310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5216121600045375191, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000002861023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1316,11 +1322,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -255
+      value: -280
       objectReference: {fileID: 0}
     - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 2.4299927
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6516561461051493684, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1332,7 +1342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_margin.w
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_margin.x
@@ -1340,7 +1350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_margin.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7785324955693934716, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_margin.z
