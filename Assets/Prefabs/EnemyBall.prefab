@@ -217,7 +217,7 @@ MonoBehaviour:
   _detectionRange: 12
   _passiveMoveBehaviour: {fileID: 742611249307757176}
   _aggressiveMoveBehaviour: {fileID: 3740619279168830784}
-  _scoreValue: 20
+  _scoreValue: 35
 --- !u!114 &742611249307757176
 MonoBehaviour:
   m_ObjectHideFlags: 0
