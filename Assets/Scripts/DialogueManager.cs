@@ -6,18 +6,27 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[System.Serializable]
+public struct DialogueEntry
+{
+    public string characterName;
+    public string dialogue;
+}
+
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float typingSpeed = 0.05f;
 
-    [Header("Character configs")] [SerializeField]
+    [Header("Character configs")][SerializeField]
     private Color char1Color;
 
     [SerializeField] private Color char2Color;
     [SerializeField] private string char1Name = "Dr. Cecil";
+    public string Char1Name => char1Name;
     [SerializeField] private string char2Name = "Dr. Zorbist";
+    public string Char2Name => char2Name;
     [SerializeField] private Sprite char1Portrait;
     [SerializeField] private Sprite char2Portrait;
 
@@ -25,19 +34,20 @@ public class DialogueManager : MonoBehaviour
 
     private Dictionary<string, List<DialogueEntry>> _dialogueSequences;
     private List<DialogueEntry> _currentSequence;
+    public DialogueEntry? CurrentEntry 
+    { 
+        get
+        {
+            if (_currentSequence == null) return null;
+            return _currentSequence[_currentDialogueIndex];
+        }
+    }
     private int _currentDialogueIndex = -1;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
 
     private object life_number;
     public event Action onDialogueComplete;
-
-    [System.Serializable]
-    public struct DialogueEntry
-    {
-        public string characterName;
-        public string dialogue;
-    }
 
     private void OnEnable()
     {
