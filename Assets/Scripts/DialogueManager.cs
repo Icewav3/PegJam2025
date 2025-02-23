@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     private Color char1Color;
 
     [SerializeField] private Color char2Color;
-    [SerializeField] private string char1Name;
+    [SerializeField] private string char1Name = "Dr. Cecil";
     [SerializeField] private string char2Name = "Dr. Zorbist";
     [SerializeField] private Sprite char1Portrait;
     [SerializeField] private Sprite char2Portrait;
