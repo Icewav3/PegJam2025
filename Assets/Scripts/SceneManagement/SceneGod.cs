@@ -11,10 +11,12 @@ public class SceneGod : MonoBehaviour
 	private string gameScene;	
 	[SerializeField]
 	private string mainMenuScene;
+
+	[SerializeField] private string introScene;
 	public static SceneGod SInstance { get; private set; }
-	public enum GameState { Death, Game, MainMenu, Quit }
+	public enum GameState { Death, Game, MainMenu, Quit, Intro }
 	// services
-	[SerializeField]
+	[SerializeField] //this is now canvas
 	public GameObject dialogue;
 
 	[SerializeField] public DialogueManager DialogueManager;
@@ -53,7 +55,7 @@ public class SceneGod : MonoBehaviour
 
 	private void Start()
 	{
-		DialogueManager = dialogue.GetComponent<DialogueManager>();
+		DialogueManager = this.GetComponentInChildren<DialogueManager>();
 	}
 
 	/// <summary>
@@ -96,7 +98,7 @@ public class SceneGod : MonoBehaviour
 			Debug.LogWarning("Already in Game Scene!");
 		}
 		//yes its scuffed
-		DialogueManager.StartDialogueSequence("intro");
+		DialogueManager.StartDialogueSequence("movement_tutorial");
 	}
 	private void EnterDeathState()
 	{
@@ -117,11 +119,28 @@ public class SceneGod : MonoBehaviour
 		{
 			_currentState = GameState.MainMenu;
 			SceneManager.LoadScene(mainMenuScene);
+			dialogue.SetActive(false);
 		}
 		else
 		{
 			Debug.LogWarning("Already in Main Menu Scene!");
 		}
+	}
+	
+	public void EnterIntroState()
+	{
+		if (_currentState != GameState.Intro)
+		{
+			_currentState = GameState.Intro;
+			SceneManager.LoadScene(introScene);
+			dialogue.SetActive(true);
+		}
+		else
+		{
+			Debug.LogWarning("Already in Intro Scene!");
+		}
+		print("runs");
+		DialogueManager.StartDialogueSequence("intro");
 	}
 
 	public void EnterQuitState()

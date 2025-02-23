@@ -316,7 +316,8 @@ MonoBehaviour:
   deathScene: DeathScene
   gameScene: GameScene
   mainMenuScene: MainMenuScene
-  dialogue: {fileID: 3973187884169182029}
+  introScene: IntroScene
+  dialogue: {fileID: 7249562375039399539}
   DialogueManager: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &1103243229021618886
@@ -1113,7 +1114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3699159935261339958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1156,7 +1157,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1581725389
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7490214941988473159
 MonoBehaviour:
@@ -1296,7 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4353176088072835533, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5069595242637064145, guid: e8c1ffa1b7082d74cb08674377525ee8, type: 3}
       propertyPath: m_fontSize

@@ -586,6 +586,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 2574296532888433139, guid: d75fc63090cce2f409c475906fe538cd, type: 3}
+      propertyPath: targetState
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4008493137290382193, guid: d75fc63090cce2f409c475906fe538cd, type: 3}
       propertyPath: m_text
       value: Play
