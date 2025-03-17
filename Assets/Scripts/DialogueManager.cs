@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
         // Movement tutorial
         _dialogueSequences["movement_tutorial"] = new List<DialogueEntry>
         {
-            new DialogueEntry { characterName = " ", dialogue = "(Use WASD to move!)" }
+            new DialogueEntry { characterName = " ", dialogue = "(Use WASD to move! and hold Left Click to charge and release to fire)" }
         };
 
         // Movement reaction
